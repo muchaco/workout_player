@@ -1,0 +1,35 @@
+{
+    "schema_version": 1,
+    "name": "Bemelegítés",
+    "description": "Ez egy 5 perces általános bemelegítés, amelyet minden edzés előtt ajánlunk.\n\nSegít előkészíteni a testedet a fizikai aktivitásra, amely elkerüli a sérüléseket és javítja a teljesítményt, növeli a véráramlást és előkészíti az izmokat a mozgásra.\n\nJó bemelgítést kívánok!",
+    "excercises": [
+        {
+            "type": "excercise",
+            "countdown": 120,
+            "media": "https://media.giphy.com/media/vfZo6HTPoMPuC3PlNI/giphy.gif",
+            "description": "Végezz izületi körzéseket a lentről felfelé a következő izületeken:\n\n- boka\n- térd\n- csípő\n- csukló\n- könyök\n- váll\n- nyak\n\nA körzéseket 10-15 másodpercig végezd el, vigyázz hogy a végére érj a megadott időintervallumban!",
+            "name": "Izüleiti körzések"
+        },
+        {
+            "type": "excercise",
+            "countdown": 60,
+            "media": "https://media.giphy.com/media/sg1yhMxKpbTw4Swxig/giphy.gif",
+            "description": "Végezz dinamikus nyújtást a végtagjaid lengetésével:\n\n- Egyik lábadon állva a másikat előre hátra lengetve majd fordítva\n- Karjaidat magastartásban és mélytartásban lengesd magad mögé felváltva\n\nVigyázz hogy a végére érj a megadott időintervallumban!",
+            "name": "Végtagok dinamikus nyújtása"
+        },
+        {
+            "type": "excercise",
+            "countdown": 60,
+            "media": "https://media.giphy.com/media/d7dtMOrGg6H7oZsXFn/giphy.gif",
+            "description": "Kulcscpontok\n\n- A sarkaid ne érjenek le a szökdelés közben\n- A gyakrolat elején inkább csak szökdelj, a vége felé emeld a térded olyan magasra hogy a combod vízszintesen legyen\n- Használd a kezedet viszonyítási pontnak, hogy érezd meddig kell felemelned a térdedet",
+            "name": "Helyben futás"
+        },
+        {
+            "type": "excercise",
+            "countdown": 60,
+            "media": "https://media.giphy.com/media/ftRl43udaulhyTgc4C/giphy.gif",
+            "description": "Kulcscpontok\n\n- A sarkaid ne érjenek le a szökdelés közben\n- A kézmozgást tartsd szinkronban a szökdeléssel",
+            "name": "Jumping Jack"
+        }
+    ]
+}

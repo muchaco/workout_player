@@ -1,0 +1,32 @@
+name: Create Git tag on merge
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  create_tag:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Read version file
+        id: version
+        run: echo ::set-output name=version::$(cat version)
+
+      - name: Check if tag already exists
+        id: tag_exists
+        run: |
+          if git rev-parse ${{ steps.version.outputs.version }} >/dev/null 2>&1; then
+            echo ::set-output name=tag_exists::true
+          else
+            echo ::set-output name=tag_exists::false
+          fi
+
+      - name: Create Git tag
+        if: steps.tag_exists.outputs.tag_exists == 'false'
+        run: |
+          git tag ${{ steps.version.outputs.version }}
+          git push origin ${{ steps.version.outputs.version }}

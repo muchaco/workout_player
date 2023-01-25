@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "schema_version": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "excercises": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": ["excercise", "rest"]
+                    },
+                    "countdown": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "media": {
+                        "type": "string",
+                        "pattern": "^(https?|ftp):\/\/[^\\s/$.?#].[^\\s]*$"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "repetition": {
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                },
+                "required": ["type"],
+                "anyOf": [
+                    {
+                        "required": ["countdown", "media", "description", "name"]
+                    },
+                    {
+                        "required": ["repetition", "media", "description", "name"]
+                    },
+                    {
+                        "required": ["countdown"]
+                    }
+                ]
+            }
+        }
+    },
+    "required": ["schema_version", "name", "description", "excercises"]
+}

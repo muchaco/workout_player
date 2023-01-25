@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+  <title>Workout Player</title>
+</head>
+
+<body class="w3-theme-l4">
+  <div class="container w3-theme">
+    <div class="w3-row row-1 w3-text-theme">
+      <div class="w3-col l3 col-1 w3-theme-l3">
+        <div class="w3-row w3-middle row-2 w3-theme-d1">
+          <div id="excercise-number" class="w3-col middle">
+          </div>
+        </div>
+        <div id="excercise-description" class="w3-row row-3 w3-theme-d3"></div>
+      </div>
+      <div class="w3-col l6 col-4 w3-theme-d5">
+        <div class="w3-row row-4 w3-theme-d4">
+          <div id="excercise-media" class="w3-col middle">
+          </div>
+        </div>
+        <div id="progressbar" class="w3-row row-5 w3-theme-d2"></div>
+      </div>
+      <div id="excercise-list" class="w3-col l3 col-5 w3-theme-l1"></div>
+    </div>
+    <div class="w3-row row-5 w3-theme-d3 w3-padding">
+      <div class="w3-bar w3-center">
+          <button class="w3-button w3-round w3-theme-l2" title="Jump to start" id="menu-restart"><strong>🗘</strong></button>
+          <button class="w3-button w3-round w3-theme-l2" title="Previous excercise" id="menu-previous">⏮</button>
+          <button class="w3-button w3-round w3-theme-l2" title="Pause" id="menu-pause">⏸</button>
+          <button class="w3-button w3-disabled w3-round w3-theme-l2" title="Resume" id="menu-play">⏵</button>
+          <button class="w3-button w3-round w3-theme-l2" title="Next excercise" id="menu-next">⏭</button>
+          <button class="w3-button w3-round w3-theme-l2" title="Finish" id="menu-finish">⏹</button>
+      </div>
+  </div>
+  </div>
+  <div class="overlay">
+    <div class="overlay-content">
+    </div>
+  </div>
+
+  <input type="file" id="file-upload" accept=".json">
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
