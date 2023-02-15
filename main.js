@@ -3,7 +3,6 @@ import $ from "jquery";
 import { marked } from 'marked';
 import DOMPurify from 'isomorphic-dompurify';
 import Ajv from "ajv"
-import schemaUrl from './assets/schema/workout_schema_v1.json?url'
 import './style.css'
 import EventEmitter from "events";
 
