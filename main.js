@@ -254,7 +254,6 @@ function next() {
 
 function handle_file_upload(event) {
     const file = event.target.files[0];
-
     if (file.type !== "application/json") {
         console.log("Not a JSON file, please upload a valid WorkoutJSON file.");
         $(".warning").html("Not a JSON file, please upload a valid WorkoutJSON file.");
@@ -308,7 +307,7 @@ function validate_json(json) {
 function read_schema_file(callback) {
     $.ajax({
         type: "GET",
-        url: schemaUrl,
+        url: "/schema/workout_schema_v1.json",
         dataType: "json",
         success: function(response) {
             callback(response);
