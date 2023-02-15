@@ -17,6 +17,15 @@ The player works like a media player, but you can upload a workout program that 
 
 https://workout-player.onrender.com/?workout_url=https://raw.githubusercontent.com/muchaco/workout_player/main/example/example.json
 
+## Coming updates
+
+* QR code for opening in mobile
+* Responsive layout for mobile
+* Spinner when json is being validated
+* Store recent workouts in local storage
+* Add unit tests
+* Workout json creator
+
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/muchaco/workout_player/tags). 

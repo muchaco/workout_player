@@ -1,0 +1,15 @@
+name: Call Render.com webhook on new tag
+
+on:
+  create:
+    tags:
+      - '*'
+
+jobs:
+  call-webhook:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Render.com webhook
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{"tag": "${{ github.ref }}" }' ${{ secrets.RENDER_WEBHOOK_URL }}

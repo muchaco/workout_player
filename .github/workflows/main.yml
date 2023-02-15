@@ -19,7 +19,7 @@ jobs:
       - name: Check if tag already exists
         id: tag_exists
         run: |
-          git rev-parse ${{ steps.version.outputs.version }} >/dev/null 2>&1
+          git rev-parse ${{ steps.version.outputs.version }} > /dev/null 2>&1
           if [ $? -eq 0 ]; then
             echo ::set-output name=tag_exists::true
           else
