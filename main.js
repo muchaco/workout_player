@@ -40,6 +40,7 @@ $("#menu-next").on("click", next);
 $("#menu-restart").on("click", restart);
 $("#menu-finish").on("click", finish);
 ee.on('json_validated', (valid, workout) => {
+    toggle_spinner();
     if (valid) {
         update_workout(workout);
     } else {
@@ -254,6 +255,8 @@ function next() {
 
 function handle_file_upload(event) {
     const file = event.target.files[0];
+
+    toggle_spinner();
     if (file.type !== "application/json") {
         console.log("Not a JSON file, please upload a valid WorkoutJSON file.");
         $(".warning").html("Not a JSON file, please upload a valid WorkoutJSON file.");
@@ -335,6 +338,11 @@ function frame() {
         width += interval;
         $("#progressbar").width(Math.min(width, 100) + '%');
     }
+}
+
+function toggle_spinner() {
+    console.log("Toggling spinner")
+    $(".loading").fadeToggle();
 }
 
 main();
