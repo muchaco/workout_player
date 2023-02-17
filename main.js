@@ -49,7 +49,9 @@ ee.on('json_validated', (valid, workout) => {
     }
 });
 
-function main() { 
+function main() {
+    $('.container').removeClass('w3-hide');
+    console.log("Starting Workout Timer");
     if (json_url) {
         $.ajax({
             type: "GET",
@@ -61,6 +63,7 @@ function main() {
             }
         });
     } else {
+        toggle_spinner();
         add_overlay_content(
             `<p><button class="w3-button w3-round w3-theme-l2" id="upload">Upload workout</button></p>
              <p class="warning"></p>`
@@ -235,7 +238,7 @@ function pause() {
     } else {
         clearInterval(countdown_interval);
         clearInterval(progressbar_interval);
-        is_paused = true;        
+        is_paused = true;
         $("#menu-pause").addClass("w3-disabled");
         $("#menu-play").removeClass("w3-disabled");
     }
@@ -295,7 +298,7 @@ function add_overlay_content(content) {
 
 function validate_json(json) {
     console.log(`Validating JSON file ${json}`)
-    read_schema_file(function(schema) {
+    read_schema_file(function (schema) {
         const ajv = new Ajv();
         const validate = ajv.compile(schema);
         const valid = validate(json);
@@ -312,7 +315,7 @@ function read_schema_file(callback) {
         type: "GET",
         url: "/schema/workout_schema_v1.json",
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
             callback(response);
         }
     });
