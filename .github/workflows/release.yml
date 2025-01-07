@@ -1,0 +1,26 @@
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      increment:
+        description: "Increment version"
+        required: true
+        default: "minor"
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  create_tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Release version
+        run: |
+          npm version ${{ github.event.inputs.increment }}
+          VERSION=$(node -p "require('./package.json').version")
+          git push origin v${VERSION}
