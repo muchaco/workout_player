@@ -1,5 +1,4 @@
 import Ajv from 'ajv';
-import EventEmitter from 'events';
 import DOMPurify from 'isomorphic-dompurify';
 import $ from 'jquery';
 import { marked } from 'marked';
@@ -11,9 +10,12 @@ let current_index = null;
 let countdown_interval = null;
 let is_paused = false;
 let progressbar_interval = null;
-let ee = new EventEmitter();
 
 // event listeners
+
+function addEventListener(selector, event, handler) {
+    document.querySelector(selector).addEventListener(event, handler);
+}
 
 $('#excercise-list').on('click', 'li', function () {
     // Click on excercise name in list
@@ -21,34 +23,25 @@ $('#excercise-list').on('click', 'li', function () {
     jump_to_excercise_index(index);
 });
 
-$('#file-upload').on('change', handle_file_upload);
-$('#menu-pause').on('click', () => {
-    if (!$('#menu-pause').hasClass('w3-disabled')) {
+addEventListener('#file-upload', 'change', handle_file_upload);
+addEventListener('#menu-pause', 'click', () => {
+    if (
+        !document.querySelector('#menu-pause').classList.contains('w3-disabled')
+    ) {
         pause();
     }
 });
-$('#menu-play').on('click', () => {
-    if (!$('#menu-play').hasClass('w3-disabled')) {
+addEventListener('#menu-play', 'click', () => {
+    if (
+        !document.querySelector('#menu-play').classList.contains('w3-disabled')
+    ) {
         pause();
     }
 });
-$('#menu-previous').on('click', previous);
-$('#menu-next').on('click', next);
-$('#menu-restart').on('click', restart);
-$('#menu-finish').on('click', finish);
-ee.on('json_validated', (valid, workout) => {
-    toggle_spinner();
-    if (valid) {
-        update_workout(workout);
-    } else {
-        console.log(
-            'Invalid Workout file, please upload a valid Workout file.'
-        );
-        $('.warning').html(
-            'Invalid Workout file, please upload a valid Workout file.'
-        );
-    }
-});
+addEventListener('#menu-previous', 'click', previous);
+addEventListener('#menu-next', 'click', next);
+addEventListener('#menu-restart', 'click', restart);
+addEventListener('#menu-finish', 'click', finish);
 
 /**
  * Main function to initialize the workout timer application.
@@ -470,15 +463,20 @@ function add_overlay_content(content) {
  * @fires json_validated - Emits an event indicating whether the JSON is valid or not.
  */
 function validate_json(json) {
-    console.log(`Validating JSON file ${json}`);
+    console.log(`Validating JSON file ${JSON.stringify(json)}`);
     read_schema_file(function (schema) {
         const ajv = new Ajv();
         const validate = ajv.compile(schema);
         const valid = validate(json);
+        toggle_spinner();
         if (!valid) {
             console.log(validate.errors);
+            $('.warning').html(
+                'Invalid Workout file, please upload a valid Workout file.'
+            );
+        } else {
+            update_workout(json);
         }
-        ee.emit('json_validated', valid, json);
     });
 }
 

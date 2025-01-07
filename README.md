@@ -7,7 +7,6 @@ The player works like a media player, but you can upload a workout program that 
 ## Dependencies
 
 -   [Ajv](https://github.com/ajv-validator/ajv) - JSON schema validator
--   [Events](https://github.com/browserify/eventsv) - Event emitter
 -   [Howler](https://github.com/goldfire/howler.js) - Audio library
 -   [Isomorphic DOMPurify](https://github.com/kkomelin/isomorphic-dompurify) - XSS sanitizer
 -   [jQuery](https://github.com/jquery/jquery) - HTML DOM manipulation
