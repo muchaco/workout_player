@@ -1,9 +1,9 @@
-import Ajv from "ajv";
-import EventEmitter from "events";
+import Ajv from 'ajv';
+import EventEmitter from 'events';
 import DOMPurify from 'isomorphic-dompurify';
-import $ from "jquery";
+import $ from 'jquery';
 import { marked } from 'marked';
-import * as sounds from "./sounds.js";
+import * as sounds from './sounds.js';
 import './style.css';
 
 let list = null;
@@ -15,33 +15,38 @@ let ee = new EventEmitter();
 
 // event listeners
 
-$("#excercise-list").on("click", "li", function () { // Click on excercise name in list
+$('#excercise-list').on('click', 'li', function () {
+    // Click on excercise name in list
     const index = $(this).index();
     jump_to_excercise_index(index);
 });
 
-$("#file-upload").on("change", handle_file_upload);
-$("#menu-pause").on("click", () => {
-    if (!$("#menu-pause").hasClass("w3-disabled")) {
+$('#file-upload').on('change', handle_file_upload);
+$('#menu-pause').on('click', () => {
+    if (!$('#menu-pause').hasClass('w3-disabled')) {
         pause();
     }
 });
-$("#menu-play").on("click", () => {
-    if (!$("#menu-play").hasClass("w3-disabled")) {
+$('#menu-play').on('click', () => {
+    if (!$('#menu-play').hasClass('w3-disabled')) {
         pause();
     }
 });
-$("#menu-previous").on("click", previous);
-$("#menu-next").on("click", next);
-$("#menu-restart").on("click", restart);
-$("#menu-finish").on("click", finish);
+$('#menu-previous').on('click', previous);
+$('#menu-next').on('click', next);
+$('#menu-restart').on('click', restart);
+$('#menu-finish').on('click', finish);
 ee.on('json_validated', (valid, workout) => {
     toggle_spinner();
     if (valid) {
         update_workout(workout);
     } else {
-        console.log("Invalid Workout file, please upload a valid Workout file.");
-        $(".warning").html("Invalid Workout file, please upload a valid Workout file.");
+        console.log(
+            'Invalid Workout file, please upload a valid Workout file.'
+        );
+        $('.warning').html(
+            'Invalid Workout file, please upload a valid Workout file.'
+        );
     }
 });
 
@@ -60,27 +65,31 @@ ee.on('json_validated', (valid, workout) => {
  */
 function main() {
     const url_params = new URLSearchParams(location.search);
-    const json_url = url_params.get("workout_url");
+    const json_url = url_params.get('workout_url');
 
     $('.container').removeClass('w3-hide');
-    console.log("Starting Workout Timer");
+    console.log('Starting Workout Timer');
     if (json_url) {
-        $.ajax({
-            type: "GET",
-            url: json_url,
-            dataType: "json",
-            success: validate_json,
-            error: function (xhr, status, error) {
-                console.log(`Error loading JSON file: ${error}`);
-            }
-        });
+        fetch(json_url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(
+                        `Error loading JSON file: ${response.statusText}`
+                    );
+                }
+                return response.json();
+            })
+            .then((data) => validate_json(data))
+            .catch((error) => console.log(error.message));
     } else {
         toggle_spinner();
         add_overlay_content(
             `<p><button class="w3-button w3-round w3-theme-l2" id="upload">Upload workout</button></p>
              <p class="warning"></p>`
-        )
-        $("#upload").on("click", () => { $("#file-upload").trigger("click"); })
+        );
+        $('#upload').on('click', () => {
+            $('#file-upload').trigger('click');
+        });
     }
 }
 
@@ -95,11 +104,13 @@ function main() {
  */
 function update_excercise_number(param) {
     if (!param) {
-        $("#excercise-number").empty();
-        console.log(`Updating excercise repetition/countdown with empty string`);
+        $('#excercise-number').empty();
+        console.log(
+            `Updating excercise repetition/countdown with empty string`
+        );
         return;
     }
-    $("#excercise-number").html(DOMPurify.sanitize(param));
+    $('#excercise-number').html(DOMPurify.sanitize(param));
     console.log(`Updating excercise repetition/countdown with ${param}`);
 }
 
@@ -110,15 +121,17 @@ function update_excercise_number(param) {
  */
 function update_excercise_media(param) {
     if (!param) {
-        $("#excercise-media").empty();
+        $('#excercise-media').empty();
         console.log(`Updating excercise media with empty string`);
         return;
     }
-    if (param.startsWith("http")) {
-        $("#excercise-media").html(DOMPurify.sanitize(`<img src="${param}" alt="media">`));
+    if (param.startsWith('http')) {
+        $('#excercise-media').html(
+            DOMPurify.sanitize(`<img src="${param}" alt="media">`)
+        );
         console.log(`Updating excercise media with image from ${param}`);
     } else {
-        $("#excercise-media").html(DOMPurify.sanitize(param));
+        $('#excercise-media').html(DOMPurify.sanitize(param));
         console.log(`Updating excercise media with ${param}`);
     }
 }
@@ -132,13 +145,15 @@ function update_excercise_media(param) {
  */
 function update_excercise_description(markdown_text) {
     if (!markdown_text) {
-        $("#excercise-description").empty();
+        $('#excercise-description').empty();
         console.log(`Updating excercise description with empty string`);
         return;
     }
     const html_text = marked.parse(markdown_text);
-    $("#excercise-description").html(DOMPurify.sanitize(html_text));
-    console.log(`Updating excercise description with markdown text: ${markdown_text}`);
+    $('#excercise-description').html(DOMPurify.sanitize(html_text));
+    console.log(
+        `Updating excercise description with markdown text: ${markdown_text}`
+    );
 }
 
 /**
@@ -158,19 +173,21 @@ function fill_excercise(excercise) {
         update_excercise_description();
         update_excercise_media();
         update_progressbar(0);
-    } else if (excercise.type === "rest") {
+    } else if (excercise.type === 'rest') {
         update_excercise_number(excercise.countdown);
-        update_excercise_description("# Rest period")
+        update_excercise_description('# Rest period');
         update_excercise_media();
         update_progressbar(excercise.countdown);
-    } else if (excercise.type === "excercise") {
+    } else if (excercise.type === 'excercise') {
         update_excercise_description(excercise.description);
         update_excercise_media(excercise.media);
         if (excercise.countdown) {
             update_excercise_number(excercise.countdown);
             update_progressbar(excercise.countdown);
         } else {
-            console.log(`Excercise ${excercise.name} has no countdown, setting progressbar to 0`);
+            console.log(
+                `Excercise ${excercise.name} has no countdown, setting progressbar to 0`
+            );
             update_excercise_number(excercise.repetition);
             update_progressbar(0);
         }
@@ -199,23 +216,26 @@ function fill_excercise_list() {
     let content = '<ul class="w3-ul w3-hoverable">';
     for (let i = 0; i < list.length; i++) {
         content += `<li class="excercise-name" id="excercise-${i}">`;
-        if (list[i].type === "excercise") {
+        if (list[i].type === 'excercise') {
             if (list[i].countdown) {
                 content += `${list[i].name} (${list[i].countdown} sec)`;
             } else if (list[i].repetition) {
                 content += `${list[i].name} (${list[i].repetition} reps)`;
             } else {
-                console.log(`Excercise ${list[i].name} has no repetition or countdown`);
+                console.log(
+                    `Excercise ${list[i].name} has no repetition or countdown`
+                );
             }
-        } else if (list[i].type === "rest") {
+        } else if (list[i].type === 'rest') {
             content += `Rest (${list[i].countdown} sec)`;
-        } else { // Unknown type of excercise
+        } else {
+            // Unknown type of excercise
             console.log(`Unknown type of excercise: ${list[i].type})`);
         }
-        content += "</li>";
+        content += '</li>';
     }
-    content += "</ul>";
-    $("#excercise-list").html(DOMPurify.sanitize(content));
+    content += '</ul>';
+    $('#excercise-list').html(DOMPurify.sanitize(content));
     console.log(`Updating left pane with new list items`);
 }
 
@@ -242,8 +262,8 @@ function jump_to_excercise_index(index) {
  * @param {number} index - The index of the exercise to activate.
  */
 function activate_excercise(index) {
-    $(".excercise-name").removeClass("active");
-    $(`#excercise-${index}`).addClass("active");
+    $('.excercise-name').removeClass('active');
+    $(`#excercise-${index}`).addClass('active');
     console.log(`Activating item at index ${index}`);
 }
 
@@ -255,11 +275,11 @@ function activate_excercise(index) {
  * transitions to the next exercise or finishes the workout when appropriate.
  */
 function countdown() {
-    let actual_countdown = $("#excercise-number").text();
-    console.log(`Countdown value: ${actual_countdown}`)
+    let actual_countdown = $('#excercise-number').text();
+    console.log(`Countdown value: ${actual_countdown}`);
     if (list[current_index].countdown === undefined) {
         clearInterval(countdown_interval);
-        return
+        return;
     }
     var next_value = parseInt(actual_countdown) - 1;
     if (next_value > 0) {
@@ -293,7 +313,7 @@ function finish() {
     clearInterval(countdown_interval);
     fill_excercise();
     fill_excercise_list();
-    $(".excercise-name").removeClass("active");
+    $('.excercise-name').removeClass('active');
     add_overlay_content(
         `<p>Workout finished</p>
          <p>
@@ -302,8 +322,10 @@ function finish() {
          <p>
          <p class="warning"></p>`
     );
-    $("#restart").on("click", restart);
-    $("#upload").on("click", () => { $("#file-upload").trigger("click"); })
+    $('#restart').on('click', restart);
+    $('#upload').on('click', () => {
+        $('#file-upload').trigger('click');
+    });
 
     console.log(`Countdown finished, displaying "Finished" message`);
 }
@@ -322,7 +344,7 @@ function restart() {
 function start() {
     fill_excercise_list();
     jump_to_excercise_index(0);
-    $(".overlay").fadeOut();
+    $('.overlay').fadeOut();
 }
 
 /**
@@ -341,14 +363,14 @@ function pause() {
         countdown_interval = setInterval(countdown, 1000);
         progressbar_interval = setInterval(frame, 10);
         is_paused = false;
-        $("#menu-play").addClass("w3-disabled");
-        $("#menu-pause").removeClass("w3-disabled");
+        $('#menu-play').addClass('w3-disabled');
+        $('#menu-pause').removeClass('w3-disabled');
     } else {
         clearInterval(countdown_interval);
         clearInterval(progressbar_interval);
         is_paused = true;
-        $("#menu-pause").addClass("w3-disabled");
-        $("#menu-play").removeClass("w3-disabled");
+        $('#menu-pause').addClass('w3-disabled');
+        $('#menu-play').removeClass('w3-disabled');
     }
 }
 
@@ -383,13 +405,15 @@ function handle_file_upload(event) {
     const file = event.target.files[0];
 
     toggle_spinner();
-    if (file.type !== "application/json") {
-        console.log("Not a JSON file, please upload a valid WorkoutJSON file.");
-        $(".warning").html("Not a JSON file, please upload a valid WorkoutJSON file.");
+    if (file.type !== 'application/json') {
+        console.log('Not a JSON file, please upload a valid WorkoutJSON file.');
+        $('.warning').html(
+            'Not a JSON file, please upload a valid WorkoutJSON file.'
+        );
         return;
     }
     const reader = new FileReader();
-    reader.addEventListener("load", (event) => {
+    reader.addEventListener('load', (event) => {
         const workout = JSON.parse(event.target.result);
         validate_json(workout);
     });
@@ -423,8 +447,10 @@ function update_workout(workout) {
          <p>
          <p class="warning"></p>`
     );
-    $("#start").on("click", start);
-    $("#upload").on("click", () => { $("#file-upload").trigger('click'); });
+    $('#start').on('click', start);
+    $('#upload').on('click', () => {
+        $('#file-upload').trigger('click');
+    });
 }
 
 /**
@@ -433,8 +459,8 @@ function update_workout(workout) {
  * @param {string} content - The HTML content to be added to the overlay.
  */
 function add_overlay_content(content) {
-    $(".overlay-content").html(DOMPurify.sanitize(content));
-    $(".overlay").fadeIn()
+    $('.overlay-content').html(DOMPurify.sanitize(content));
+    $('.overlay').fadeIn();
 }
 
 /**
@@ -444,7 +470,7 @@ function add_overlay_content(content) {
  * @fires json_validated - Emits an event indicating whether the JSON is valid or not.
  */
 function validate_json(json) {
-    console.log(`Validating JSON file ${json}`)
+    console.log(`Validating JSON file ${json}`);
     read_schema_file(function (schema) {
         const ajv = new Ajv();
         const validate = ajv.compile(schema);
@@ -452,7 +478,7 @@ function validate_json(json) {
         if (!valid) {
             console.log(validate.errors);
         }
-        ee.emit("json_validated", valid, json)
+        ee.emit('json_validated', valid, json);
     });
 }
 
@@ -462,14 +488,17 @@ function validate_json(json) {
  * @param {function(Object): void} callback - The function to call with the JSON response.
  */
 function read_schema_file(callback) {
-    $.ajax({
-        type: "GET",
-        url: "/schema/workout_schema_v1.json",
-        dataType: "json",
-        success: function (response) {
-            callback(response);
-        }
-    });
+    fetch('/schema/workout_schema_v1.json')
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(
+                    `Error loading JSON file: ${response.statusText}`
+                );
+            }
+            return response.json();
+        })
+        .then((data) => callback(data))
+        .catch((error) => console.log(error.message));
 }
 
 /**
@@ -482,7 +511,7 @@ function read_schema_file(callback) {
  */
 function update_progressbar(duration) {
     clearInterval(progressbar_interval);
-    $("#progressbar").width("0%");
+    $('#progressbar').width('0%');
     if (duration === 0) {
         return;
     }
@@ -497,12 +526,15 @@ function update_progressbar(duration) {
  */
 function frame() {
     let interval = 1 / list[current_index].countdown;
-    let width = parseFloat($("#progressbar").width()) / parseFloat($("#progressbar").parent().width()) * 100;
+    let width =
+        (parseFloat($('#progressbar').width()) /
+            parseFloat($('#progressbar').parent().width())) *
+        100;
     if (width >= 100) {
         clearInterval(progressbar_interval);
     } else {
         width += interval;
-        $("#progressbar").width(Math.min(width, 100) + '%');
+        $('#progressbar').width(Math.min(width, 100) + '%');
     }
 }
 
@@ -511,8 +543,8 @@ function frame() {
  * Logs a message to the console when toggling.
  */
 function toggle_spinner() {
-    console.log("Toggling spinner")
-    $(".loading").fadeToggle();
+    console.log('Toggling spinner');
+    $('.loading').fadeToggle();
 }
 
 main();
