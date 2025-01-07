@@ -19,8 +19,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Release version
+      - name: Set up Git
         run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: Release version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://${GITHUB_TOKEN}@github.com/${{ github.repository }}
           npm version ${{ github.event.inputs.increment }}
           VERSION=$(node -p "require('./package.json').version")
           git push origin v${VERSION}
