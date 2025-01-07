@@ -30,4 +30,4 @@ jobs:
           git remote set-url origin https://${GITHUB_TOKEN}@github.com/${{ github.repository }}
           npm version ${{ github.event.inputs.increment }}
           VERSION=$(node -p "require('./package.json').version")
-          git push origin v${VERSION}
+          git push --follow-tags
