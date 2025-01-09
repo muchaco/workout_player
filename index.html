@@ -4,51 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/w3-css/4.1.0/w3.css"
+    integrity="sha512-Ef5r/bdKQ7JAmVBbTgivSgg3RM+SLRjwU0cAgySwTSv4+jYcVeDukMp+9lZGWT78T4vCUxgT3g+E8t7uabwRuw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Workout Player</title>
 </head>
 
 <body class="w3-theme-l4">
-  <div class="container w3-theme w3-hide">
-    <div class="w3-row row-1 w3-text-theme">
-      <div class="w3-col l3 col-1 w3-theme-l3">
-        <div class="w3-row w3-middle row-2 w3-theme-d1">
-          <div id="excercise-number" class="w3-col middle">
-          </div>
-        </div>
-        <div id="excercise-description" class="w3-row row-3 w3-theme-d3"></div>
-      </div>
-      <div class="w3-col l6 col-4 w3-theme-d5">
-        <div class="w3-row row-4 w3-theme-d4">
-          <div id="excercise-media" class="w3-col middle">
-          </div>
-        </div>
-        <div id="progressbar" class="w3-row row-5 w3-theme-d2"></div>
-      </div>
-      <div id="excercise-list" class="w3-col l3 col-5 w3-theme-l1"></div>
-    </div>
-    <div class="w3-row row-5 w3-theme-d3 w3-padding">
-      <div class="w3-bar w3-center">
-        <button class="w3-button w3-round w3-theme-l2" title="Jump to start"
-          id="menu-restart"><strong>🗘</strong></button>
-        <button class="w3-button w3-round w3-theme-l2" title="Previous excercise" id="menu-previous">⏮</button>
-        <button class="w3-button w3-round w3-theme-l2" title="Pause" id="menu-pause">⏸</button>
-        <button class="w3-button w3-disabled w3-round w3-theme-l2" title="Resume" id="menu-play">⏵</button>
-        <button class="w3-button w3-round w3-theme-l2" title="Next excercise" id="menu-next">⏭</button>
-        <button class="w3-button w3-round w3-theme-l2" title="Finish" id="menu-finish">⏹</button>
-      </div>
-    </div>
-  </div>
-  <div class="overlay">
-    <div class="overlay-content"></div>
-  </div>
-  </div>
-  <div class="loading">
-    <div class="loader"></div>
-  </div>
-  <input type="file" id="file-upload" accept=".json" class="w3-hide">
-  <script type="module" src="/main.js"></script>
+  <div id="app"></div>
+  <script type="module" src="src/main.js"></script>
 </body>
 
 </html>

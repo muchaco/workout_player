@@ -30,4 +30,8 @@ jobs:
           git remote set-url origin https://${GITHUB_TOKEN}@github.com/${{ github.repository }}
           npm version ${{ github.event.inputs.increment }}
           VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
           git push --follow-tags
+      - name: Call Render.com webhook
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{"tag": "refs/tags/v'${{ env.VERSION }}'" }' ${{ secrets.RENDER_WEBHOOK_URL }}

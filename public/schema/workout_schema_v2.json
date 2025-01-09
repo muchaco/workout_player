@@ -1,0 +1,90 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "schema_version": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 2
+        },
+        "name": {
+            "type": "string",
+            "minLength": 1
+        },
+        "description": {
+            "type": "string",
+            "minLength": 1
+        },
+        "exercises": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "media": {
+                        "type": "string",
+                        "pattern": "^(https?|ftp)://[^\\s/$.?#].[^\\s]*$"
+                    },
+                    "description": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
+                "required": [
+                    "name",
+                    "media",
+                    "description"
+                ]
+            }
+        },
+        "workout": {
+            "type": "array",
+            "description": "Describes the workout structure: each item references an exercise by name and specifies either countdown or repetition.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "exercise_name": {
+                        "type": "string"
+                    },
+                    "countdown": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "repetition": {
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                },
+                "required": [
+                    "exercise_name"
+                ],
+                "anyOf": [
+                    {
+                        "required": [
+                            "countdown"
+                        ]
+                    },
+                    {
+                        "required": [
+                            "repetition"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "required": [
+        "schema_version",
+        "name",
+        "description",
+        "exercises",
+        "workout"
+    ]
+}
