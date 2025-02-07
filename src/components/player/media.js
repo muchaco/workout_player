@@ -1,5 +1,5 @@
-import BaseComponent from '../utils/baseComponent.js';
-import currentExcercise from '../utils/currentExcercise.js';
+import BaseComponent from '../../utils/baseComponent.js';
+import currentExcercise from '../../utils/currentExcercise.js';
 
 class Media extends BaseComponent {
     subscriptions = ['excercises', 'current_index'];

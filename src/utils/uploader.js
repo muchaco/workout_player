@@ -23,11 +23,11 @@ export async function validateJson(json) {
             setWorkout(json);
         }
     } catch (error) {
-        eventBus.put('warning', error.message);
+        eventBus.put('toast', ['warning', error.message]);
     }
 }
 
-function setWorkout(json) {
+export function setWorkout(json) {
     globalStore.set('excercises', json.excercises);
     globalStore.set('workout_name', json.name);
     globalStore.set('workout_description', json.description);
@@ -39,10 +39,10 @@ export function handleFileUpload(event) {
     const file = event.target.files[0];
     eventBus.put('loading');
     if (file.type !== 'application/json') {
-        eventBus.put(
+        eventBus.put('toast', [
             'warning',
-            'Not a JSON file, please upload a valid WorkoutJSON file.'
-        );
+            'Not a JSON file, please upload a valid WorkoutJSON file.',
+        ]);
         return;
     }
     const reader = new FileReader();

@@ -1,4 +1,4 @@
-import BaseComponent from '../utils/baseComponent.js';
+import BaseComponent from '../../utils/baseComponent.js';
 
 class Spinner extends BaseComponent {
     html() {

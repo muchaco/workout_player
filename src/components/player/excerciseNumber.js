@@ -1,6 +1,6 @@
-import { globalStore } from '../stateManager.js';
-import BaseComponent from '../utils/baseComponent.js';
-import currentExcercise from '../utils/currentExcercise.js';
+import { globalStore } from '../../stateManager.js';
+import BaseComponent from '../../utils/baseComponent.js';
+import currentExcercise from '../../utils/currentExcercise.js';
 
 class ExcerciseNumber extends BaseComponent {
     subscriptions = ['countdown', 'current_index', 'excercises'];

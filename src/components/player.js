@@ -5,15 +5,15 @@ import '../services/overlay.js';
 import { globalStore } from '../stateManager.js';
 import BaseComponent from '../utils/baseComponent.js';
 import { validateJson } from '../utils/uploader.js';
-import Controller from './controller.js';
-import ExcerciseDescription from './excerciseDescription.js';
-import ExcerciseList from './excerciseList.js';
-import ExcerciseNumber from './excerciseNumber.js';
-import Media from './media.js';
-import Progressbar from './progressbar.js';
-import Spinner from './spinner.js';
-import Summary from './summary.js';
-import Uploader from './uploader.js';
+import Controller from './player/controller.js';
+import ExcerciseDescription from './player/excerciseDescription.js';
+import ExcerciseList from './player/excerciseList.js';
+import ExcerciseNumber from './player/excerciseNumber.js';
+import Media from './player/media.js';
+import Progressbar from './player/progressbar.js';
+import Spinner from './player/spinner.js';
+import Summary from './player/summary.js';
+import Uploader from './player/uploader.js';
 
 class Player extends BaseComponent {
     components = [

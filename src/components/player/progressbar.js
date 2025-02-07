@@ -1,5 +1,5 @@
-import { globalStore } from '../stateManager.js';
-import BaseComponent from '../utils/baseComponent.js';
+import { globalStore } from '../../stateManager.js';
+import BaseComponent from '../../utils/baseComponent.js';
 
 class Progressbar extends BaseComponent {
     props = {

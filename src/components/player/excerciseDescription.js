@@ -1,6 +1,6 @@
 import { marked } from 'marked';
-import BaseComponent from '../utils/baseComponent.js';
-import currentExcercise from '../utils/currentExcercise.js';
+import BaseComponent from '../../utils/baseComponent.js';
+import currentExcercise from '../../utils/currentExcercise.js';
 
 class ExcerciseDescription extends BaseComponent {
     subscriptions = ['excercises', 'current_index'];

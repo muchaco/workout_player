@@ -1,5 +1,5 @@
-import BaseComponent from '../utils/baseComponent.js';
-import { handleFileUpload } from '../utils/uploader.js';
+import BaseComponent from '../../utils/baseComponent.js';
+import { handleFileUpload } from '../../utils/uploader.js';
 
 class FileInput extends BaseComponent {
     eventListeners = [

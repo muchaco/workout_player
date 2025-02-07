@@ -1,6 +1,6 @@
-import eventBus from '../eventBus.js';
-import { globalStore } from '../stateManager.js';
-import BaseComponent from '../utils/baseComponent.js';
+import eventBus from '../../eventBus.js';
+import { globalStore } from '../../stateManager.js';
+import BaseComponent from '../../utils/baseComponent.js';
 
 class Controller extends BaseComponent {
     subscriptions = ['is_paused', 'current_index', 'excercises'];
