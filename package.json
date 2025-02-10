@@ -12,10 +12,10 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
-    "ajv": "^8.12.0",
-    "howler": "^2.2.3",
-    "isomorphic-dompurify": "^0.26.0",
-    "jquery": "^3.6.3",
-    "marked": "^4.2.12"
+    "ajv": "^8.17.1",
+    "isomorphic-dompurify": "^2.20.0",
+    "marked": "^15.0.6",
+    "postcss": "^8.5.1",
+    "postcss-nested": "^7.0.2"
   }
 }

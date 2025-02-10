@@ -1,0 +1,357 @@
+{
+    "schema_version": 1,
+    "name": "Full Body Stretch Routine",
+    "description": "A routine featuring 3 rounds of each stretch (30s on, 5s rest), with two-sided stretches done left/right alternately, ending with a 2-minute squat hold.",
+    "excercises": [
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Loaded butterfly stretch",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://www.byrdie.com/thmb/Pl3KnVK7hJ_OTD8sXXdf0lyEWj4=/1000x800/filters:fill(auto,1)/butterflystretches-d763a86589924933bcdb0e44933654bf.jpg",
+            "description": "Loaded butterfly stretch",
+            "name": "Loaded Butterfly"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Forward Fold",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://th.bing.com/th/id/OIP.357NdLKi7YOVGUz-e2xBjgHaE8?rs=1&pid=ImgDetMain",
+            "description": "Hamstring stretch",
+            "name": "Forward Fold"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Loaded butterfly stretch",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://www.byrdie.com/thmb/Pl3KnVK7hJ_OTD8sXXdf0lyEWj4=/1000x800/filters:fill(auto,1)/butterflystretches-d763a86589924933bcdb0e44933654bf.jpg",
+            "description": "Loaded butterfly stretch",
+            "name": "Loaded Butterfly"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Forward Fold",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://th.bing.com/th/id/OIP.357NdLKi7YOVGUz-e2xBjgHaE8?rs=1&pid=ImgDetMain",
+            "description": "Hamstring stretch",
+            "name": "Forward Fold"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Loaded butterfly stretch",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://www.byrdie.com/thmb/Pl3KnVK7hJ_OTD8sXXdf0lyEWj4=/1000x800/filters:fill(auto,1)/butterflystretches-d763a86589924933bcdb0e44933654bf.jpg",
+            "description": "Loaded butterfly stretch",
+            "name": "Loaded Butterfly"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Forward Fold",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://th.bing.com/th/id/OIP.357NdLKi7YOVGUz-e2xBjgHaE8?rs=1&pid=ImgDetMain",
+            "description": "Hamstring stretch",
+            "name": "Forward Fold"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Shinbox",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://i.ytimg.com/vi/19DSMmK5vic/maxresdefault.jpg",
+            "description": "Single-side stretch (if needed) or general posture hold",
+            "name": "Shinbox"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Downward Dog",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://th.bing.com/th/id/OIP.P1Dyj8gnWOSmawcsz1UhVAHaEK?rs=1&pid=ImgDetMain",
+            "description": "Full-body stretch focusing on shoulders and hamstrings",
+            "name": "Downward Dog"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Shinbox",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://i.ytimg.com/vi/19DSMmK5vic/maxresdefault.jpg",
+            "description": "Single-side stretch (if needed) or general posture hold",
+            "name": "Shinbox"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Downward Dog",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://th.bing.com/th/id/OIP.P1Dyj8gnWOSmawcsz1UhVAHaEK?rs=1&pid=ImgDetMain",
+            "description": "Full-body stretch focusing on shoulders and hamstrings",
+            "name": "Downward Dog"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Shinbox",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://i.ytimg.com/vi/19DSMmK5vic/maxresdefault.jpg",
+            "description": "Single-side stretch (if needed) or general posture hold",
+            "name": "Shinbox"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Downward Dog",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://th.bing.com/th/id/OIP.P1Dyj8gnWOSmawcsz1UhVAHaEK?rs=1&pid=ImgDetMain",
+            "description": "Full-body stretch focusing on shoulders and hamstrings",
+            "name": "Downward Dog"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: World Greatest Stretch (Left)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://www.mensjournal.com/.image/t_share/MTk2MTM2Njg3NDcyNzQ4MDM3/step-2.jpg",
+            "description": "Left side dynamic lunge-and-reach",
+            "name": "World Greatest Stretch (Left)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: World Greatest Stretch (Right)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://www.mensjournal.com/.image/t_share/MTk2MTM2Njg3NDcyNzQ4MDM3/step-2.jpg",
+            "description": "Right side dynamic lunge-and-reach",
+            "name": "World Greatest Stretch (Right)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: World Greatest Stretch (Left)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://www.mensjournal.com/.image/t_share/MTk2MTM2Njg3NDcyNzQ4MDM3/step-2.jpg",
+            "description": "Left side dynamic lunge-and-reach",
+            "name": "World Greatest Stretch (Left)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: World Greatest Stretch (Right)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://www.mensjournal.com/.image/t_share/MTk2MTM2Njg3NDcyNzQ4MDM3/step-2.jpg",
+            "description": "Right side dynamic lunge-and-reach",
+            "name": "World Greatest Stretch (Right)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: World Greatest Stretch (Left)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://www.mensjournal.com/.image/t_share/MTk2MTM2Njg3NDcyNzQ4MDM3/step-2.jpg",
+            "description": "Left side dynamic lunge-and-reach",
+            "name": "World Greatest Stretch (Left)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: World Greatest Stretch (Right)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://www.mensjournal.com/.image/t_share/MTk2MTM2Njg3NDcyNzQ4MDM3/step-2.jpg",
+            "description": "Right side dynamic lunge-and-reach",
+            "name": "World Greatest Stretch (Right)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Pigeon (Left)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://lh3.googleusercontent.com/DIJE6T2z7Noao2I9c0IlSTj_I375P0aelKqhMaGcg6eDbmYLscyZDUrtR2KANVAwoGThs3_oonpN3zSuptUhkm-s4cqOB7g6DsYxL1Y8MXr7AVMuwgrNwFIQ5JC8fqX5XSwhMUsb",
+            "description": "Left side hip opener",
+            "name": "Pigeon (Left)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Pigeon (Right)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://lh3.googleusercontent.com/DIJE6T2z7Noao2I9c0IlSTj_I375P0aelKqhMaGcg6eDbmYLscyZDUrtR2KANVAwoGThs3_oonpN3zSuptUhkm-s4cqOB7g6DsYxL1Y8MXr7AVMuwgrNwFIQ5JC8fqX5XSwhMUsb",
+            "description": "Right side hip opener",
+            "name": "Pigeon (Right)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Pigeon (Left)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://lh3.googleusercontent.com/DIJE6T2z7Noao2I9c0IlSTj_I375P0aelKqhMaGcg6eDbmYLscyZDUrtR2KANVAwoGThs3_oonpN3zSuptUhkm-s4cqOB7g6DsYxL1Y8MXr7AVMuwgrNwFIQ5JC8fqX5XSwhMUsb",
+            "description": "Left side hip opener",
+            "name": "Pigeon (Left)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Pigeon (Right)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://lh3.googleusercontent.com/DIJE6T2z7Noao2I9c0IlSTj_I375P0aelKqhMaGcg6eDbmYLscyZDUrtR2KANVAwoGThs3_oonpN3zSuptUhkm-s4cqOB7g6DsYxL1Y8MXr7AVMuwgrNwFIQ5JC8fqX5XSwhMUsb",
+            "description": "Right side hip opener",
+            "name": "Pigeon (Right)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Pigeon (Left)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://lh3.googleusercontent.com/DIJE6T2z7Noao2I9c0IlSTj_I375P0aelKqhMaGcg6eDbmYLscyZDUrtR2KANVAwoGThs3_oonpN3zSuptUhkm-s4cqOB7g6DsYxL1Y8MXr7AVMuwgrNwFIQ5JC8fqX5XSwhMUsb",
+            "description": "Left side hip opener",
+            "name": "Pigeon (Left)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Pigeon (Right)",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 30,
+            "media": "https://lh3.googleusercontent.com/DIJE6T2z7Noao2I9c0IlSTj_I375P0aelKqhMaGcg6eDbmYLscyZDUrtR2KANVAwoGThs3_oonpN3zSuptUhkm-s4cqOB7g6DsYxL1Y8MXr7AVMuwgrNwFIQ5JC8fqX5XSwhMUsb",
+            "description": "Right side hip opener",
+            "name": "Pigeon (Right)"
+        },
+        {
+            "type": "excercise",
+            "name": "Rest",
+            "media": "https://th.bing.com/th/id/OIP.IN4NX9Cr36sacBQCwRSzTQHaDt?rs=1&pid=ImgDetMain",
+            "description": "Prepare for: Isometric Deep Squat Hold",
+            "countdown": 5
+        },
+        {
+            "type": "excercise",
+            "countdown": 120,
+            "media": "https://th.bing.com/th/id/OIP.76vdFOAi-oDmp3YAFGs4EwAAAA?rs=1&pid=ImgDetMain",
+            "description": "Hold a static squat at 90 degrees",
+            "name": "Isometric Deep Squat Hold"
+        }
+    ]
+}

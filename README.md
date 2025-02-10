@@ -2,15 +2,15 @@
 
 A workout player application written in javascript.
 
-The player works like a media player, but you can upload a workout program that then shows you the exercises to be done, complete with timers, descriptions, progressbar, pictures and videos.
+The player functions like a media player, allowing you to upload a workout program that displays exercises with timers, descriptions, progress bars, pictures, and videos.
 
 ## Dependencies
 
 -   [Ajv](https://github.com/ajv-validator/ajv) - JSON schema validator
--   [Howler](https://github.com/goldfire/howler.js) - Audio library
 -   [Isomorphic DOMPurify](https://github.com/kkomelin/isomorphic-dompurify) - XSS sanitizer
--   [jQuery](https://github.com/jquery/jquery) - HTML DOM manipulation
 -   [Marked](https://github.com/markedjs/marked) - Markdown parser
+-   [PostCSS](https://github.com/postcss/postcss) - Transforming styles with JS plugins
+-   [PostCSS-nested][https://github.com/postcss/postcss-nested] - Nested CSS support for PostCSS
 
 ## Demo
 
