@@ -10,7 +10,7 @@ The player functions like a media player, allowing you to upload a workout progr
 -   [Isomorphic DOMPurify](https://github.com/kkomelin/isomorphic-dompurify) - XSS sanitizer
 -   [Marked](https://github.com/markedjs/marked) - Markdown parser
 -   [PostCSS](https://github.com/postcss/postcss) - Transforming styles with JS plugins
--   [PostCSS-nested][https://github.com/postcss/postcss-nested] - Nested CSS support for PostCSS
+-   [PostCSS-nested](https://github.com/postcss/postcss-nested) - Nested CSS support for PostCSS
 
 ## Demo
 
@@ -20,7 +20,6 @@ https://workout-player.onrender.com/?workout_url=https://raw.githubusercontent.c
 
 -   QR code for opening in mobile
 -   Responsive layout for mobile
--   Store recent workouts in local storage
 -   Add unit tests
 -   Workout json creator
 

@@ -5,7 +5,7 @@ import {
     listLocalStorageElements,
 } from '../../utils/localStorage.js';
 import { setWorkout } from '../../utils/uploader.js';
-import FileInput from './fileinput.js';
+import FileInput from './fileInput.js';
 
 class Uploader extends BaseComponent {
     props = {
