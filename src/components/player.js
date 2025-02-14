@@ -43,11 +43,20 @@ class Player extends BaseComponent {
         globalStore.set('excercises', []);
         globalStore.set('show_uploader', true);
 
-        const url_params = new URLSearchParams(location.search);
-        const json_url = url_params.get('workout_url');
-        if (json_url) {
+        const urlParams = new URLSearchParams(location.search);
+        const jsonUrl = urlParams.get('workout_url');
+        if (jsonUrl) {
             eventBus.put('loading');
-            const response = await fetch(json_url);
+            const response = await fetch(jsonUrl).catch(async (error) => {
+                if (
+                    error instanceof TypeError &&
+                    error.message.includes('Failed to fetch')
+                ) {
+                    const corsProxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(jsonUrl)}`;
+                    return await fetch(corsProxyUrl);
+                }
+                throw error;
+            });
             if (!response.ok) {
                 throw new Error(
                     `Error loading JSON file: ${response.statusText}`

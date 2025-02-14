@@ -2,15 +2,16 @@ import { marked } from 'marked';
 import eventBus from '../../eventBus.js';
 import { globalStore } from '../../stateManager.js';
 import BaseComponent from '../../utils/baseComponent.js';
+import literal from '../../utils/literal.js';
 import {
     listLocalStorageElements,
     removeFromLocalStorage,
     saveToLocalStorage,
 } from '../../utils/localStorage.js';
-
 class Summary extends BaseComponent {
     props = {
         saved: false,
+        qrCode: null,
     };
     eventListeners = [
         {
@@ -53,9 +54,37 @@ class Summary extends BaseComponent {
             },
         },
         {
+            selector: '#qrcode',
+            event: 'click',
+            callback: async () => {
+                const response = await this.uploadJson({
+                    excercises: globalStore.excercises,
+                    name: globalStore.workout_name,
+                    description: globalStore.workout_description,
+                    schema_version: globalStore.schema_version,
+                });
+
+                if (response.status === literal.success) {
+                    let fileUrl = response.data.url;
+                    fileUrl = fileUrl.replace(
+                        'https://tmpfiles.org/',
+                        'https://tmpfiles.org/dl/'
+                    );
+                    const workoutUrl =
+                        'http://localhost:5173/?workout_url=' + fileUrl;
+                    this.props.qrCode = `https://quickchart.io/qr?text=${workoutUrl}`;
+                } else {
+                    eventBus.put('toast', [
+                        'error',
+                        'Errorduring QR code generation',
+                    ]);
+                }
+            },
+        },
+        {
             event: 'control',
             callback: (operation) => {
-                if (operation === 'finish') {
+                if (operation === literal.finish) {
                     globalStore.set('finished', true);
                 }
             },
@@ -65,6 +94,22 @@ class Summary extends BaseComponent {
 
     connectedCallback() {
         this.inLocalStorage = 0;
+    }
+
+    async uploadJson(jsonData) {
+        const blob = new Blob([JSON.stringify(jsonData, null, 2)], {
+            type: 'application/json',
+        });
+
+        const formData = new FormData();
+        formData.append('file', blob, 'data.json');
+
+        const response = await fetch('https://tmpfiles.org/api/v1/upload', {
+            method: 'POST',
+            body: formData,
+        });
+
+        return response.json();
     }
 
     html() {
@@ -108,13 +153,17 @@ class Summary extends BaseComponent {
                                   globalStore.workout_description
                               )}</div>`
                     }
-                    <p><button class="w3-button w3-round w3-theme-l2" id="start">${startLabel}</button>
-                    <button class="w3-button w3-round w3-theme-l2" id="select">Select another workout</button>
-                    <button class="w3-button w3-round w3-theme-l2" id="${
-                        saved ? 'remove' : 'save'
-                    }">${
-                        saved ? 'Remove from storage' : 'Save to storage'
-                    }</button></p>
+                    <p>
+                        <button class="w3-button w3-round w3-theme-l2" id="start">${startLabel}</button>
+                        <button class="w3-button w3-round w3-theme-l2" id="select">Select another workout</button>
+                        <button class="w3-button w3-round w3-theme-l2" id="${
+                            saved ? 'remove' : 'save'
+                        }">${
+                            saved ? 'Remove from storage' : 'Save to storage'
+                        }</button>
+                        <button class="w3-button w3-round w3-theme-l2" id="qrcode">QR code</button>
+                        ${this.props.qrCode ? `<div id="qrcode-container"><img src="${this.props.qrCode}" /></div>` : ''}
+                    </p>
                 </div>
             </div>
         `;
