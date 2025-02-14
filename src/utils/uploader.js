@@ -31,6 +31,7 @@ export function setWorkout(json) {
     globalStore.set('excercises', json.excercises);
     globalStore.set('workout_name', json.name);
     globalStore.set('workout_description', json.description);
+    globalStore.set('schema_version', json.schema_version);
     globalStore.set('show_summary', true);
     globalStore.set('finished', false);
 }
