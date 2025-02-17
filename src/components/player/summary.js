@@ -2,12 +2,15 @@ import { marked } from 'marked';
 import eventBus from '../../eventBus.js';
 import { globalStore } from '../../stateManager.js';
 import BaseComponent from '../../utils/baseComponent.js';
+import { uploadJson } from '../../utils/fileUploader.js';
 import literal from '../../utils/literal.js';
 import {
     listLocalStorageElements,
     removeFromLocalStorage,
     saveToLocalStorage,
 } from '../../utils/localStorage.js';
+import { generateQRCodeUrl } from '../../utils/qrCode.js';
+
 class Summary extends BaseComponent {
     props = {
         saved: false,
@@ -56,30 +59,7 @@ class Summary extends BaseComponent {
         {
             selector: '#qrcode',
             event: 'click',
-            callback: async () => {
-                const response = await this.uploadJson({
-                    excercises: globalStore.excercises,
-                    name: globalStore.workout_name,
-                    description: globalStore.workout_description,
-                    schema_version: globalStore.schema_version,
-                });
-
-                if (response.status === literal.success) {
-                    let fileUrl = response.data.url;
-                    fileUrl = fileUrl.replace(
-                        'https://tmpfiles.org/',
-                        'https://tmpfiles.org/dl/'
-                    );
-                    const workoutUrl =
-                        'http://localhost:5173/?workout_url=' + fileUrl;
-                    this.props.qrCode = `https://quickchart.io/qr?text=${workoutUrl}`;
-                } else {
-                    eventBus.put('toast', [
-                        'error',
-                        'Errorduring QR code generation',
-                    ]);
-                }
-            },
+            callback: this.handleQRCodeClick.bind(this),
         },
         {
             event: 'control',
@@ -94,22 +74,48 @@ class Summary extends BaseComponent {
 
     connectedCallback() {
         this.inLocalStorage = 0;
+        globalStore.subscribe('show_summary', (_, show) => {
+            if (!show) {
+                this.props.qrCode = null;
+            }
+        });
     }
 
-    async uploadJson(jsonData) {
-        const blob = new Blob([JSON.stringify(jsonData, null, 2)], {
-            type: 'application/json',
-        });
+    async handleQRCodeClick() {
+        if (this.props.qrCode) return;
 
-        const formData = new FormData();
-        formData.append('file', blob, 'data.json');
+        const fileUrl = await this.getFileUrl();
+        if (!fileUrl) return;
 
-        const response = await fetch('https://tmpfiles.org/api/v1/upload', {
-            method: 'POST',
-            body: formData,
-        });
+        eventBus.put('loading');
+        const workoutUrl = `${window.location.origin}/?workout_url=${fileUrl}`;
+        this.props.qrCode = generateQRCodeUrl(workoutUrl);
+        eventBus.put('loaded');
+    }
 
-        return response.json();
+    async getFileUrl() {
+        const urlParams = new URLSearchParams(location.search);
+        const existingUrl = urlParams.get('workout_url');
+
+        if (existingUrl) {
+            return existingUrl;
+        } else {
+            try {
+                const fileUrl = await uploadJson({
+                    excercises: globalStore.excercises,
+                    name: globalStore.workout_name,
+                    description: globalStore.workout_description,
+                    schema_version: globalStore.schema_version,
+                });
+                return fileUrl;
+            } catch (error) {
+                eventBus.put('toast', [
+                    'error',
+                    'Error during QR code generation',
+                ]);
+                return null;
+            }
+        }
     }
 
     html() {
