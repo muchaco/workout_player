@@ -14,7 +14,7 @@ export async function validateJson(json) {
         const ajv = new Ajv();
         const validate = ajv.compile(schema);
         const valid = validate(json);
-        eventBus.put('loaded', null);
+        eventBus.put('loaded');
         if (!valid) {
             throw new Error(
                 'Invalid Workout file, please upload a valid Workout file.'
@@ -37,6 +37,12 @@ export function setWorkout(json) {
 }
 
 export function handleFileUpload(event) {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('workout_url')) {
+        url.searchParams.delete('workout_url');
+        window.history.replaceState({}, document.title, url.toString());
+    }
+
     const file = event.target.files[0];
     eventBus.put('loading');
     if (file.type !== 'application/json') {
